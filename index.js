@@ -21,7 +21,6 @@ const addNewUser = (userId, socketId) => {
   if (!user) {
     onlineUsers = [...onlineUsers, { userId, socketId }];
   }
-  console.log(onlineUsers);
 };
 
 const removeUser = (socketId) => {
@@ -38,7 +37,6 @@ io.on("connection", (socket) => {
     if (username) {
       addNewUser(username, socket.id);
     }
-    console.log(username);
   });
 
   // listens to buyer offer and emits a notification for the seller having the id
