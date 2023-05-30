@@ -14,6 +14,10 @@ const io = new Server(server, {
   },
 });
 
+server.get("/test", (req, res) => {
+  res.send("<h1>It's working 🤗</h1>");
+});
+
 let onlineUsers = [];
 
 const addNewUser = (userId, socketId) => {
