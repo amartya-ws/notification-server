@@ -4,7 +4,7 @@ const http = require("http");
 const cors = require("cors");
 const { Server } = require("socket.io");
 
-app.use(cors);
+app.use(cors());
 
 const server = http.createServer(app);
 
@@ -14,8 +14,8 @@ const io = new Server(server, {
   },
 });
 
-server.get("/test", (req, res) => {
-  res.send("<h1>It's working 🤗</h1>");
+app.get("/", (req, res) => {
+  res.send("<h1>Server is running</h1>");
 });
 
 let onlineUsers = [];
@@ -62,6 +62,6 @@ io.on("connection", (socket) => {
 });
 
 const port = process.env.PORT ?? 8080;
-server.listen(8080, () => {
+server.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
