@@ -57,6 +57,7 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(3001, () => {
-  console.log("server is running");
+const port = process.env.PORT ?? 8080;
+server.listen(8080, () => {
+  console.log(`Listening on port ${port}`);
 });
