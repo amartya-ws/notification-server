@@ -38,9 +38,11 @@ const getUser = (userId) => {
 io.on("connection", (socket) => {
   // adds the user to onlineUsers array when a new connection is established from the seller side
   socket.on("new user seller", (username) => {
+    console.log("username", username);
     if (username) {
       addNewUser(username, socket.id);
     }
+    console.log(onlineUsers);
   });
 
   // listens to buyer offer and emits a notification for the seller having the id
@@ -48,6 +50,10 @@ io.on("connection", (socket) => {
     let user = getUser(writerId);
 
     if (user?.socketId) {
+      console.log(
+        "🚀 ~ file: index.js:53 ~ socket.on ~ user?.socketId:",
+        user?.socketId
+      );
       io.to(user?.socketId).emit("buyer offer", {
         message: msg,
       });
