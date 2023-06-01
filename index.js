@@ -47,6 +47,7 @@ io.on("connection", (socket) => {
 
   // listens to buyer offer and emits a notification for the seller having the id
   socket.on("buyer offer made", ({ msg, writerId }) => {
+    console.log({ msg, writerId });
     let user = getUser(writerId);
 
     if (user?.socketId) {
